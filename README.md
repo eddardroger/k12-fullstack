@@ -18,7 +18,12 @@ file xác định)
 3. git push origin + tên nhánh đang đứng. (ví dụ: nhánh đang đứng là 
 master thì câu lệnh sẽ là git push origin master)
  
-*Download folder code trên repository github:
+* Download folder code trên repository github:
 - git clone https://github.com/ten_user_name/ten_repository
-*Kéo code mới nhất về máy:
+* Kéo code mới nhất về máy:
 - git pull origin ten_nhanh
+
+* Cách đặt tên file:
+- Không sử dụng khoảng trắng
+- Không viết có dấu
+Ví dụ tên file chuẩn: index.html | index_1.html | index-1.html | fileIndex.html 
