@@ -27,3 +27,6 @@ master thì câu lệnh sẽ là git push origin master)
 - Không sử dụng khoảng trắng
 - Không viết có dấu
 Ví dụ tên file chuẩn: index.html | index_1.html | index-1.html | fileIndex.html 
+
+- Tạo nhánh mới ở trong repository: ```git checkout -b ten_nhanh```
+- Chuyển nhánh: ```git checkout ten_nhanh```
