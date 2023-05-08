@@ -30,3 +30,5 @@ Ví dụ tên file chuẩn: index.html | index_1.html | index-1.html | fileIndex
 
 - Tạo nhánh mới ở trong repository: ```git checkout -b ten_nhanh```
 - Chuyển nhánh: ```git checkout ten_nhanh```
+- Lấy code trên nhánh hiện tại ```git pull origin + tên nhánh```
+- Lấy code mới nhất trên tất cả các nhánh ```git fetch --all```
