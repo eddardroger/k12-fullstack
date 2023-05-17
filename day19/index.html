@@ -27,6 +27,7 @@
     </div><div class="cau-1">
         <h2>5. Tính trung bình cộng 
             của giá trị min và giá trị max</h2>
+            <button onclick="trungBinhCongMinMax()">cau 5</button>
     </div>
     <button onclick="clickMe()">Câu 1</button>
     
@@ -39,35 +40,36 @@
                 console.log(index);
             }
         }
-        
-        function timMax() {
+
+        function khaiBaoMang() {
             let array = [];
-            for (let i = 0; i < 5; i++) {
+            let a = parseInt(prompt('Nhap vao so phan tu'));
+
+            for (let i = 0; i < a; i++) {
                 array[i] = parseInt(prompt('Nhap vao phan tu thu: ' + i ));
             }
-            let max = array[0]; // max = 3
-            //array = [3, 5, 7, 8, 1]
-            for (let i = 0; i < array.length; i++) {
-                if (max < array[i]) { //true
-                    max = array[i]; //max = 8
-                }
-            }
-            console.log('Ket qua lon nhat la: ' + max);
+
+            return array;
         }
 
-        function timMin() {
-            let array = [];
-            for (let i = 0; i < 5; i++) {
-                array[i] = parseInt(prompt('Nhap vao phan tu thu: ' + i ));
-            }
-            let min = array[0]; // max = 3
+        function timMinMax(array, condition) {
+            let m = array[0]; // max = 3
             //array = [3, 5, 7, 8, 1]
             for (let i = 0; i < array.length; i++) {
-                if (min > array[i]) { //true
-                    min = array[i]; //max = 8
+                if (condition === 'timMin') {
+                    if (m > array[i]) { //true
+                        m = array[i]; //max = 8
+                    }
+                } else if (condition === 'timMax') {
+                    if (m < array[i]) { //true
+                        m = array[i]; //max = 8
+                    }
+                } else {
+                    break;
                 }
             }
-            console.log('Ket qua be nhat la: ' + min);
+
+            return m;
         }
 
         function nhapMang(a)
@@ -100,7 +102,11 @@
 
         function trungBinhCongMinMax()
         {
-            
+            let array = khaiBaoMang();
+            let min = timMin(array, 'timMin');
+            let max = timMax(array, 'timMax');
+            console.log('Min: ' + min + '; ' + 'Max: ' + max );
+            console.log('Trung binh cong la: ' + (min + max) / 2);
         }
     </script>
 </body>
