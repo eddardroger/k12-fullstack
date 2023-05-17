@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- src = source -->
+    <div class="baitap">
+        Nhập vào 1 mảng gồm 5 phần tử.
+    </div>
+    <div class="cau-1">
+        <h2>1. Tìm ra giá trị lớn nhất</h2>
+        <button onclick="timMax()">Show ket qua</button>
+    </div>
+    <div class="cau-1">
+        <h2>2. Tìm ra giá trị nhỏ nhất</h2>
+    </div><div class="cau-1">
+        <h2>3. Sắp xếp các giá trị theo
+            thứ tự tăng dần</h2>
+            <button onclick="sapXepTangDan()">Show</button>
+    </div><div class="cau-1">
+        <h2>4. Sắp xếp các giá trị 
+            theo thứ tự giảm dần</h2>
+    </div><div class="cau-1">
+        <h2>5. Tính trung bình cộng 
+            của giá trị min và giá trị max</h2>
+    </div>
+    <button onclick="clickMe()">Câu 1</button>
+    
+    <script src="./js/script.js"></script> 
+    <script>
+        function clickMe() {
+            let a = parseInt(prompt('Nhap vao a'));
+
+            for (let index = 0; index < a; index++) {
+                console.log(index);
+            }
+        }
+        
+        function timMax() {
+            let array = [];
+            for (let i = 0; i < 5; i++) {
+                array[i] = parseInt(prompt('Nhap vao phan tu thu: ' + i ));
+            }
+            let max = array[0]; // max = 3
+            //array = [3, 5, 7, 8, 1]
+            for (let i = 0; i < array.length; i++) {
+                if (max < array[i]) { //true
+                    max = array[i]; //max = 8
+                }
+            }
+            console.log('Ket qua lon nhat la: ' + max);
+        }
+
+        function timMin() {
+            let array = [];
+            for (let i = 0; i < 5; i++) {
+                array[i] = parseInt(prompt('Nhap vao phan tu thu: ' + i ));
+            }
+            let min = array[0]; // max = 3
+            //array = [3, 5, 7, 8, 1]
+            for (let i = 0; i < array.length; i++) {
+                if (min > array[i]) { //true
+                    min = array[i]; //max = 8
+                }
+            }
+            console.log('Ket qua be nhat la: ' + min);
+        }
+
+        function nhapMang(a)
+        {
+            let array = [];
+            for (let i = 0; i < a; i++) {
+                array[i] = parseInt(prompt('Nhap vao phan tu thu: ' + i ));
+            }
+
+            return array;
+        }
+
+        function sapXepTangDan()
+        {
+            let array = nhapMang(6);
+            let tg;
+            //array = [5, 4, 2, 3, 8, 9] [4, 5, ...]
+            for (let i = 0; i < array.length - 1; i++) { // i = 0; array[0] = 4
+                for (let j = i + 1; j < array.length; j++) { //j = 0 + 1
+                    if (array[i] < array[j]) { //so sanh array[0] va array[1]
+                        tg = array[i]; // tg = a[0]
+                        array[i] = array[j]; //a[0] = a[1]
+                        array[j] = tg; // a[1] = a[0]
+                    }
+                }                
+            }
+
+            console.log(array);
+        }
+
+        function trungBinhCongMinMax()
+        {
+            
+        }
+    </script>
+</body>
+</html>
