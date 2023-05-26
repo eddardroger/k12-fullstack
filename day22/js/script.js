@@ -151,14 +151,16 @@ let image = nameImg() || 'default.jpg'; //Khi nameImg === null || undefined || f
 //12. Vòng lặp for
 let array = [5, 2, 5, 4, 5, 6]
 for (let i = 0; i < array.length; i++) {
-    const element = array[i];
+    array[i] * 2;
 }
+console.log(array);
+// [10, 4, 10, 8, 10, 12]
 
 //ví dụ:
 // - in ra các phần tử của mảng
 // - cho biết vị trí của phần tử chia hết cho 5
-for (const index of array) { //lặp ra các giá trị trong mảng
-    console.log(index);
+for (const value of array) { //lặp ra các giá trị trong mảng
+    console.log(value);
 }
 
 for (const index in array) { //lặp dựa trên index (chỉ mục) của các phần tử trong mảng
