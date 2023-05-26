@@ -164,3 +164,4 @@ for (const index of array) { //lặp ra các giá trị trong mảng
 for (const index in array) { //lặp dựa trên index (chỉ mục) của các phần tử trong mảng
     console.log(index);
 }
+
