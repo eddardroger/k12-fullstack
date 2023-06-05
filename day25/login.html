@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .login-form, .register-form {
+        margin: 0 auto;
+        width: 300px;
+        height: 300px;
+        border: 1px solid black;
+        border-radius: 20px;
+    }
+    /* .register-form {
+        display: none; 
+    } */
+    .hidden {
+        display: none;
+    }
+    .is-display {
+        display: block;
+    }
+
+</style>
+<body>
+    <div class="form">
+        
+    </div>
+    <div class="login-form">
+        <h1>Login Form</h1>
+        <button onclick="handleOpenRegister()">Dang ky</button>
+    </div>
+    <div class="register-form">
+        <h1>Register Form</h1>
+        <button onclick="handleOpenLogin()">Dang nhap</button>
+    </div>
+    <script>
+        var loginForm = document.querySelector('.login-form');
+        var registerForm = document.querySelector('.register-form');
+        registerForm.classList.add("hidden");
+        // function handleOpenRegister() {
+        //     loginForm.style.display = "none";
+        //     registerForm.style.display = "block";
+        // }
+
+        // function handleOpenLogin() {
+        //     loginForm.style.display = "block";
+        //     registerForm.style.display = "none";
+        // }
+        function handleOpenLogin() {
+            loginForm.classList.add("is-display");
+            registerForm.classList.remove("is-display");
+            registerForm.classList.add("hidden");
+        }
+        function handleOpenRegister() {
+            loginForm.classList.add("hidden");
+            registerForm.classList.remove("hidden");
+            registerForm.classList.add("is-display");
+        }
+    </script>
+</body>
+</html>

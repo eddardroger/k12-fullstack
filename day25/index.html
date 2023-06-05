@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<style>
+    .js-style {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+    }
+</style>
+<body>
+    <div class="js-style">
+        <p>Hello world!</p>
+    </div>
+    <div class="js-style">
+        <p>Hello world1!</p>
+    </div>
+
+    <!-- Bài tập 1: -->
+    <div class="login-form">
+        Mặc định ban đầu được hiển thị. Khi ấn nút đăng ký sẽ bị ẩn đi và hiện form register
+    </div>
+    <div class="register">
+        Sau khi register thành công thì form register sẽ bị ẩn đi. và Form login được hiện lên
+    </div>
+
+    <!-- End Bài tập 1 -->
+    <button onclick="handleOnclick()">Try it</button>
+    <script src="./js/script.js"></script>
+    <script>
+        //các kiểu query tới phần tử trong js
+        //getElementById: gọi tới id
+        //getElementsByClassName: gọi tới tất cả các classname tìm thấy được
+        //getElementsByTagName: gọi theo tag (thẻ): <p>; <body>; <navigation>
+        //querySelector: lấy ra phần tử đầu tiên tìm được
+        //querySelectorAll: lấy ra tất cả các phần tử tìm được
+        function handleOnclick() {
+            var element = document.querySelectorAll('.js-style'); //element là 1 object (đối tượng)
+            element.forEach(query => {
+                query.style.backgroundColor = 'green';
+                });
+            element.style.color = "red"; //thuộc tính (attribute)
+            element.style.width = "300px";
+            element.style.height = "300px";
+            element.style.backgroundColor = "green";
+        }
+    </script>
+</body>
+</html>
