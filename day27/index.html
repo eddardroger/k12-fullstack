@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .map {
+        width: 600px;
+        height: 600px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+    }
+    .square {
+        width: 198px;
+        height: 198px;
+        border: 1px solid grey;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-content: center;
+    }
+    .x-clicked {
+        font-size: 50px;
+        color: blue;
+    }
+    .o-clicked {
+        font-size: 50px;
+        color: red;
+    }
+</style>
+<body>
+    <h1>Game cờ caro 3x3</h1>
+    <p>B1: vẽ ô (ma trận 3x3)</p>
+    <p>B2: bắt sự kiện onclick + tính turn đánh</p>
+    <p>B3: bắt sự kiện click 2 lần vào 1 ô</p>
+    <p></p>
+    <div class="map">
+        <div class="square" id="index_00" onclick="handleClickSquare(0, 0)"></div>
+        <div class="square" id="index_01" onclick="handleClickSquare(0, 1)"></div>
+        <div class="square" id="index_02" onclick="handleClickSquare(0, 2)"></div>
+        <div class="square" id="index_10" onclick="handleClickSquare(1, 0)"></div>
+        <div class="square" id="index_11" onclick="handleClickSquare(1, 1)"></div>
+        <div class="square" id="index_12" onclick="handleClickSquare(1, 2)"></div>
+        <div class="square" id="index_20" onclick="handleClickSquare(2, 0)"></div>
+        <div class="square" id="index_21" onclick="handleClickSquare(2, 1)"></div>
+        <div class="square" id="index_22" onclick="handleClickSquare(2, 2)"></div>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        //Khai báo mảng X và O dùng để lưu lại các ô đã đánh
+        var arrayX = [];
+        var arrayO = [];
+        //tính turn click
+        var turn = 0;
+        //limit số lần click của 1 ô
+        var arr = [];
+
+
+        function handleClickSquare(m, n) { //tham số m, n được truyền vào để biết được vị trí của ô đã click
+            let error = false;
+            for (let i = 0; i < arr.length; i++) { //check các ô bị click trùng
+                if (arr[i].toString() === [m,n].toString()) error = true;
+            }
+            if (! error) {
+                turn += 1; //tăng turn thêm 1 sau mỗi lần click
+
+                if (turn % 2 === 1) {
+                    arrayX.push([m, n]); // arrayX.push(m + '' + n);
+                    document.getElementById('index_' + m + '' + n).innerHTML = '<div class="x-clicked">X</div>';
+                } else {
+                    arrayO.push([m, n]);
+                    document.getElementById('index_' + m + '' + n).innerHTML = '<div class="o-clicked">O</div>';
+                }
+                arr = [...arrayX, ...arrayO]; // tuơng đương với: concat (gộp mảng)
+            } else {
+                console.log('Ô đã được chọn. Vui lòng chọn ô khác!');
+            }
+        }
+    </script>
+</body>
+</html>
