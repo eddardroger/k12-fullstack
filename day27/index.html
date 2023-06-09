@@ -39,6 +39,7 @@
     <p>B2: bắt sự kiện onclick + tính turn đánh</p>
     <p>B3: bắt sự kiện click 2 lần vào 1 ô</p>
     <p></p>
+    <h1 id="turn"></h1>
     <div class="map">
         <div class="square" id="index_00" onclick="handleClickSquare(0, 0)"></div>
         <div class="square" id="index_01" onclick="handleClickSquare(0, 1)"></div>
@@ -58,17 +59,36 @@
         var arrayO = [];
         //tính turn click
         var turn = 0;
+        
+        if (turn === 0) {
+            document.getElementById('turn').innerHTML = 'Lượt của player X';
+        }
+
+        //Check điều kiện thắng
+        var isVictory = false;
+
         //limit số lần click của 1 ô
         var arr = [];
-
 
         function handleClickSquare(m, n) { //tham số m, n được truyền vào để biết được vị trí của ô đã click
             let error = false;
             for (let i = 0; i < arr.length; i++) { //check các ô bị click trùng
-                if (arr[i].toString() === [m,n].toString()) error = true;
+                if (arr[i].toString() === [m, n].toString()) error = true;
             }
             if (! error) {
                 turn += 1; //tăng turn thêm 1 sau mỗi lần click
+                console.log(turn, isVictory);
+                if (turn === 9) {
+                    if (! isVictory) {
+                        document.getElementById('turn').innerHTML = 'Hoà rồi đánh làm gì nữa?';
+                    } else {
+                        document.getElementById('turn').innerHTML = 'Win rồi';
+                    }
+                    //end game, clear board, clear turn
+                } else {
+                    localStorage.setItem('turn', turn);
+                    document.getElementById('turn').innerHTML = (turn % 2 == 1) ? 'Lượt của player O' : 'Lượt của player X';
+                }
 
                 if (turn % 2 === 1) {
                     arrayX.push([m, n]); // arrayX.push(m + '' + n);
@@ -78,6 +98,24 @@
                     document.getElementById('index_' + m + '' + n).innerHTML = '<div class="o-clicked">O</div>';
                 }
                 arr = [...arrayX, ...arrayO]; // tuơng đương với: concat (gộp mảng)
+                console.log(arrayX);
+
+
+                //Gợi ý
+                // ArrayX = [[0,0], [0,1], [1,1] [0,2]];
+                // ArrayXm = [0, 0, 1, 0]; //push value Array[i][0]; 
+                // ArrayXn = [0, 1, 1, 2]; //push value Array[i][1]; 
+                // for (let i = 0; i < ArrayXm.length; i++) {
+                //     arrayXm[i] = 0; //với i = 0
+                //     for (let j = 0; j < arrayX.length; j++) {
+                //         if (arrayX[j][0] === arrayXm[i]) {
+
+                //             arrayX[j][1] = 0 //lần đầu lặp j = 0
+                //             arrayX[j + 1][1] = 1 - j //lần lặp 1
+                //             arrayX[j + 2][1] = 2 - j //lần lặp 2
+                //         }
+                //     }
+                // }
             } else {
                 console.log('Ô đã được chọn. Vui lòng chọn ô khác!');
             }
