@@ -75,9 +75,11 @@
             for (let i = 0; i < arr.length; i++) { //check các ô bị click trùng
                 if (arr[i].toString() === [m, n].toString()) error = true;
             }
+            if (isVictory) { //check xem đã win hay chưa
+                error = true;
+            }
             if (! error) {
                 turn += 1; //tăng turn thêm 1 sau mỗi lần click
-                console.log(turn, isVictory);
                 if (turn === 9) {
                     if (! isVictory) {
                         document.getElementById('turn').innerHTML = 'Hoà rồi đánh làm gì nữa?';
@@ -93,12 +95,13 @@
                 if (turn % 2 === 1) {
                     arrayX.push([m, n]); // arrayX.push(m + '' + n);
                     document.getElementById('index_' + m + '' + n).innerHTML = '<div class="x-clicked">X</div>';
+                    tinhWin(arrayX, m, n);
                 } else {
                     arrayO.push([m, n]);
                     document.getElementById('index_' + m + '' + n).innerHTML = '<div class="o-clicked">O</div>';
+                    tinhWin(arrayO, m, n);
                 }
                 arr = [...arrayX, ...arrayO]; // tuơng đương với: concat (gộp mảng)
-                console.log(arrayX);
 
 
                 //Gợi ý
@@ -116,9 +119,72 @@
                 //         }
                 //     }
                 // }
+                
+
+                //ArrayX gồm tất cả các vị trí mà X đã chọn
+                //Có vị trí [m, n] mới nhất được cập nhật vào trong ArrayX khi trigger function handleClickSquare
+                //Từ vị trí m mình đi tìm tất cả các vị trí cũng có m trong ArrayX
+                //Xét vị trí của n (push n vào trong 1 array mới)
+                //sort n theo thứ tự tăng dần 
+                //ví dụ arrayN = [0, 1, 2, 6, 8, 9]; 
+                //arrayN[0] + 1 = arrayN[1]
+
             } else {
                 console.log('Ô đã được chọn. Vui lòng chọn ô khác!');
             }
+        }
+
+        function tinhWin(array, m, n) {
+            var arrN = [];
+            var arrM = [];
+            for (let i = 0; i < array.length; i++) {  //[[1,2], [0,1], [1,1]]
+                console.log(array[i][0]);
+                if (array[i][0] === parseInt(m)) {
+                    arrN.push(array[i][1]);
+                }
+                if (array[i][1] === parseInt(n)) {
+                    arrM.push(array[i][0]);
+                }
+            }
+            arrN.sort((a, b) => a - b);
+            arrM.sort((a, b) => a - b);
+            //Cách 1 (dành cho bài 3x3): 
+            for (let j = 0; j < arrN.length; j++) {
+                if ((arrN[j] + arrN[j+1] + arrN[j+2]) / 3 === arrN[j+1]) {
+                    isVictory = true;
+                    clearRound();
+                    if (turn % 2 === 1) document.getElementById('turn').innerHTML = 'X win ngang';
+                    else document.getElementById('turn').innerHTML = 'O win ngang';
+                }                        
+            }
+            for (let k = 0; k < arrM.length; k++) {
+                if ((arrM[k] + arrM[k+1] + arrM[k+2]) / 3 === arrM[k+1]) {
+                    isVictory = true;
+                    clearRound();
+                    if (turn % 2 === 1) document.getElementById('turn').innerHTML = 'X win dọc';
+                    else document.getElementById('turn').innerHTML = 'O win dọc';
+                } 
+            }
+
+            //Cách 2 (dành cho các bài toán mở rộng: tìm ra các phần tử liền kề nhau và push vào 1 array)
+            // var arrWin = [];
+            // for (let k = 0; k < arrM.length; k++) { //arrM = [0, 1, 5, 7, 8, 9]
+            //     if (arrM[k+1] - arrM[k] === 1) {
+            //         arrWin.push(arrM[k]); // 7, 8
+            //         if (count(arrWin) === 4) {
+            //             isVictory = true;
+            //         }
+            //     } else {
+            //         arrWin = [];
+            //     }
+            // }
+        }
+
+        function clearRound() {
+            arrayX = [];
+            arrayO = [];
+            turn = 0;
+            arr = [];
         }
     </script>
 </body>
