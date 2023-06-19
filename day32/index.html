@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="callAjax" onclick="handleGet()">Test</button>
+    <div class="content">
+
+    </div>
+    <div class="de-cuong">
+        <p>Khai báo biến</p>
+        <p>câu điều kiện</p>
+        <p>vòng lặp</p>
+        <p>các kiểu selector trong DOM</p>
+        <p>Jquery</p>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        function handleCallAjax() {
+            //GET: Lấy nguồn tài nguyên (resource) từ server
+            // $.ajax({
+            //     url: "https://649056931e6aa71680cb0fe9.mockapi.io/users", 
+            //     success: function(result) {
+            //         console.log(result);
+            //     }
+            // });
+
+            var data = {
+                "name": "Khang",
+                "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/888.jpg"
+            }
+
+            //POST: Tạo mới 1 nguồn tài nguyên trên server
+            // $.ajax({ //Process the form using $.ajax()
+            // type      : 'POST', //Method type
+            // url       : 'https://649056931e6aa71680cb0fe9.mockapi.io/users', //Your form processing file URL
+            // data      : data, //Forms name
+            // dataType  : 'json',
+            //     success   : function(data) {
+
+            //     },
+            //     error : function(data) {
+                    
+            //     }
+            // });
+
+            // DELETE
+            $.ajax({
+                type: 'DELETE',
+                url: 'https://649056931e6aa71680cb0fe9.mockapi.io/users/55',
+                success: function(data) {
+                    console.log(data);
+                },
+                error : function(data) {
+
+                }
+            })
+
+            // var dataPut = {
+            //     "name": "Huynh",
+            //     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/888.jpg"
+            // }
+            // //PUT: Sửa đổi 1 nguồn tài nguyên trên server
+            // $.ajax({ //Process the form using $.ajax()
+            //     type      : 'PUT', //Method type
+            //     url       : 'https://649056931e6aa71680cb0fe9.mockapi.io/users/55', //Your form processing file URL
+            //     data      : dataPut, //Forms name
+            //     dataType  : 'json',
+            //     success   : function(data) {
+            //         console.log(data);
+            //     },
+            //     error : function(data) {
+                    
+            //     }
+            // });
+        }
+
+        function handleGet() {
+            $.ajax({
+                type: 'GET',
+                url: 'https://649056931e6aa71680cb0fe9.mockapi.io/users/51',
+                success: function(data) {
+                    var user = data;
+                    console.log(user.name);
+                    $('.content').html('<h1>' + user.name + '</h1>');
+                }
+            })
+        }
+
+    </script>
+</body>
+</html>
