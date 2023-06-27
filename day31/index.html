@@ -12,10 +12,15 @@
     <div class="box-2"></div>
     <div class="box-3"></div>
     <div id="box-4"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
     <p>Tạo trang giỏ hàng. Sử dụng Jquery để update 
         giá sản phẩm khi thay đổi số lượng hoặc xoá sản phẩm</p>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script>
+        $('.box').eq(1).html('test');
+        console.log($('.box').eq(1));
         //Jquery: cú pháp cơ bản
         // $('selector').action(); //Với selector là element được chọn | action là hành động
         // ví dụ: $('input[name=email]').val();
