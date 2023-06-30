@@ -1,0 +1,13 @@
+
+
+.body {
+    height: 300px;
+    width: 100%;
+    background-color: black;
+}
+
+.footer {
+    height: 50px;
+    width: 100%;
+    background-color: yellow;
+}
