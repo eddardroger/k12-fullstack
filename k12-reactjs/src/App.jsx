@@ -1,10 +1,27 @@
-import React from 'react'
-import Input from './components/Day37/Input'
+import React, { useState } from 'react' //alias
+import InputNumber from './components/Day39/InputNumber'
+import Button from './components/Day39/Button'
+import Result from './components/Day39/Result'
 
+//App máy tính
 const App = () => {
+    const [number, setNumber] = useState();
+    const [sum, setSum] = useState();
+
+    const handleSetNumber = (value) => {
+        setNumber(value)
+    }
+
+    const handleSetSum = (sumValue) => {
+        setSum(sumValue)
+    }
+
     return (
         <>
-            <Input />
+            <InputNumber handleSetNumber={ handleSetNumber } />
+            <Button number={ number }
+                handleSetSum={ handleSetSum } />
+            <Result />
         </>
     )
 }
