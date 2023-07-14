@@ -1,27 +1,28 @@
-import React, { useState } from 'react' //alias
-import InputNumber from './components/Day39/InputNumber'
-import Button from './components/Day39/Button'
-import Result from './components/Day39/Result'
+import React, { useState } from 'react'
+import InputAddNew from './components/Day40/InputAddNew'
+import List from './components/Day40/List'
+import ClearAll from './components/Day40/ClearAll'
+import './App.css'
 
-//App máy tính
 const App = () => {
-    const [number, setNumber] = useState();
-    const [sum, setSum] = useState();
+    const [listToDo, setListToDo] = useState();
 
-    const handleSetNumber = (value) => {
-        setNumber(value)
-    }
-
-    const handleSetSum = (sumValue) => {
-        setSum(sumValue)
+    const handleSaveListTodo = (item) => {
+        console.log(item);
     }
 
     return (
         <>
-            <InputNumber handleSetNumber={ handleSetNumber } />
-            <Button number={ number }
-                handleSetSum={ handleSetSum } />
-            <Result />
+            <div className="content">
+                <h2>Todo App</h2>
+                <div className="content-body">
+                    <InputAddNew handleSave={ handleSaveListTodo } />
+                    <List />                    
+                </div>
+                <div className="content-footer">
+                    <ClearAll />
+                </div>
+            </div>
         </>
     )
 }
