@@ -1,22 +1,21 @@
 import React from 'react'
 import './List.css'
 
-const List = () => {
+const List = (props) => {
     return (
         <>
             <div className="list">
-                <div className="list-element_child">
-                    <p>1. Học bài</p>
-                    <span>Delete</span>
-                </div>
-                <div className="list-element_child">
-                    <p>2. Xem TV</p>
-                    <span>Delete</span>
-                </div>
-                <div className="list-element_child">
-                    <p>3. Chơi game</p>
-                    <span>Delete</span>
-                </div>
+                { props.list && props.list.map((item, key) => {
+                    return (
+                        <div className="list-element_child">
+                            <p>{ key+1 }. { item.name }</p>
+                            <button className="btn-delete">X</button>
+                        </div>
+                    )
+                })}
+                {/* for (let key = 0; key < array.length; i++) {
+                    const element = array[key];
+                } */}
             </div>
         </>
     )

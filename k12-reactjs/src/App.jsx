@@ -5,10 +5,10 @@ import ClearAll from './components/Day40/ClearAll'
 import './App.css'
 
 const App = () => {
-    const [listToDo, setListToDo] = useState();
+    const [listToDo, setListToDo] = useState([]);
 
     const handleSaveListTodo = (item) => {
-        console.log(item);
+        setListToDo([...listToDo, item]);
     }
 
     return (
@@ -17,10 +17,10 @@ const App = () => {
                 <h2>Todo App</h2>
                 <div className="content-body">
                     <InputAddNew handleSave={ handleSaveListTodo } />
-                    <List />                    
+                    <List list={ listToDo } />
                 </div>
                 <div className="content-footer">
-                    <ClearAll />
+                    <ClearAll list={ listToDo } />
                 </div>
             </div>
         </>

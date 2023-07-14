@@ -3,6 +3,7 @@ import './InputAddNew.css'
 
 const InputAddNew = (props) => {
     const [toDo, setToDo] = useState({
+        id: '',
         name: '',
     });
 
@@ -14,6 +15,7 @@ const InputAddNew = (props) => {
     const handleSaveToDo = () => {
         if (toDo.name !== '') {
             props.handleSave(toDo);
+            setToDo({name: ''});
         }
     }
 
@@ -24,6 +26,7 @@ const InputAddNew = (props) => {
                     id="input-add"
                     name="name"
                     onChange={ event => handleOnchangeInput(event) }
+                    value={ toDo.name }
                 />
                 <button onClick={ handleSaveToDo }>+</button>
             </div>
