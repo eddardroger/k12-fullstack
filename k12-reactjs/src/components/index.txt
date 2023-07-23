@@ -1,0 +1,7 @@
+- List: 
+ + đi qua bao nhiêu components, những components nào?
+   dữ liệu được truyền như nào?
+- update/ delete:
+ + đi qua bao nhiêu components, những components nào?
+   dữ liệu được truyền như nào?
+ + các function xử lý những gì?

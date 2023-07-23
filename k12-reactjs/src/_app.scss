@@ -1,0 +1,42 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+
+    tr {
+        :nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+    }
+}
+
+// #root {
+//     display: flex;
+
+//     .content {
+//         flex: 1;
+//         display: flex;
+
+//         &.__header {
+//             display: flex;
+
+//             &.--image  {
+//                 flex: 1;
+//             }
+//         }
+
+//         &.__body {
+//             flex: 1;
+//         }
+
+//         &.__footer {
+//             display: flex;
+//         }
+//     }
+// }

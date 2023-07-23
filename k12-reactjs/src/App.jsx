@@ -1,30 +1,58 @@
-import React, { useState } from 'react'
-import InputAddNew from './components/Day40/InputAddNew'
-import List from './components/Day40/List'
-import ClearAll from './components/Day40/ClearAll'
-import './App.css'
-
+import React, {  useState } from 'react'
+import './_app.scss';
+import data from './data.json';
+import List from './components/Day42/List';
+//data = API trả về (Application Programming Interface: là dữ liệu do backend trả về.
+// Front end sẽ phải đọc và đổ data ra màn hình)
 const App = () => {
-    const [listToDo, setListToDo] = useState([]);
+    const [students, setStudents] = useState(data)
 
-    const handleSaveListTodo = (item) => {
-        setListToDo([...listToDo, item]);
+    const deleteStudent = (id) => {
+        setStudents(students.filter(student => student.id !== id))
     }
 
-    return (
-        <>
+    const updateStudent = (id, newStudent) => {
+        setStudents(students.map(student => {
+            if(student.id === id){
+                return {
+                    ...student, //rest of student
+                    name: newStudent.name,
+                    age: newStudent.age,
+                    gender: newStudent.gender,
+                }
+            }
+            return student
+        }))
+    }
+
+  return (
+    <>
+        <h2>HTML Table</h2>
+        <List students={ students }
+            deleteStudent={ deleteStudent }
+            updateStudent={ updateStudent }    
+        />
+
+        {/* BEM: Block__Element--Modifier
+         */}
+        {/* <div id="root">
             <div className="content">
-                <h2>Todo App</h2>
-                <div className="content-body">
-                    <InputAddNew handleSave={ handleSaveListTodo } />
-                    <List list={ listToDo } />
+                <div className="content__header">
+                    <div className="content__header--image">
+
+                    </div>
+                    <span>Title</span>
                 </div>
-                <div className="content-footer">
-                    <ClearAll list={ listToDo } />
+                <div className="content__body">
+                    <img src="" alt="" />
+                </div>
+                <div className="content__footer">
+                    <span>Footer</span>
                 </div>
             </div>
-        </>
-    )
+        </div> */}
+    </>
+  )
 }
 
 export default App

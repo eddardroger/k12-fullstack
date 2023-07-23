@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "name": "Vũ Minh Hoàng",
+        "age": 21,
+        "gender": "male"
+    },
+    {
+        "id": 2,
+        "name": "Hoàng Minh Duck",
+        "age": 22,
+        "gender": "male"
+    },
+    {
+        "id": 3,
+        "name": "Nguyễn Mạnh Cường",
+        "age": 23,
+        "gender": "male"
+    },
+    {
+        "id": 4,
+        "name": "Bùi Tuấn Ngọc",
+        "age": 24,
+        "gender": "male"
+    },
+    {
+        "id": 5,
+        "name": "Đỗ Thị Oanh",
+        "age": 25,
+        "gender": "female"
+    },
+    {
+        "id": 6,
+        "name": "Nguyễn Ngọc Phụng",
+        "age": 21,
+        "gender": "female"
+    },
+    {
+        "id": 7,
+        "name": "Nguyễn Hữu Huỳnh",
+        "age": 22,
+        "gender": "male"
+    },
+    {
+        "id": 8,
+        "name": "Vũ Minh Thưởng",
+        "age": 23,
+        "gender": "male"
+    },
+    {
+        "id": 9,
+        "name": "Nguyễn Ngọc Khang",
+        "age": 24,
+        "gender": "male"
+    }
+]

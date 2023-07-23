@@ -2,6 +2,11 @@ import React from 'react'
 import './List.css'
 
 const List = (props) => {
+
+    const handleRemoveTodo = (index) => {
+        props.removeTodo(index);
+    }
+
     return (
         <>
             <div className="list">
@@ -9,7 +14,7 @@ const List = (props) => {
                     return (
                         <div className="list-element_child">
                             <p>{ key+1 }. { item.name }</p>
-                            <button className="btn-delete">X</button>
+                            <button onClick={ () => handleRemoveTodo(key) } className="btn-delete">X</button>
                         </div>
                     )
                 })}
