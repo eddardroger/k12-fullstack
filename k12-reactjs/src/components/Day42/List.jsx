@@ -1,9 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Modal from './Modal/Modal'
 
 const List = (props) => {
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false);
     const [selectedStudent, setSelectedStudent] = useState({});
+    const [listStudent, setListStudent] = useState();
+
+    useEffect(() => {
+        console.log(listStudent);
+        setListStudent(props.students);
+    }, [listStudent]);
 
     const handleEditStudent = (student) => {
         setIsOpen(true)
@@ -21,7 +27,10 @@ const List = (props) => {
 
     const handleSortAscending = () => {
         // points.sort(function(a, b){return a-b});
-        props.students.sort((a, b) => a - b);
+        // console.log(props.students.age);
+        console.log(listStudent);
+        setListStudent(listStudent.sort((a, b) => a.age - b.age));
+        console.log(listStudent);
     }
 
   return (
@@ -47,7 +56,7 @@ const List = (props) => {
                 <th>Age</th>
                 <th>Gender</th>
             </tr>
-            { props.students && props.students.map(item => {
+            { listStudent && listStudent.map(item => {
                 return (
                     <tr key={item.id}>
                         <td>{item.id}</td>
