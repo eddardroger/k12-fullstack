@@ -2,14 +2,15 @@ import React, { useState, useCallback } from 'react'
 import './_modal.scss'
 
 const Modal = (props) => {
-    const [student, setStudent] = useState({})
+    const [student, setStudent] = useState(props.student)
 
     const handleOnchangeInput = useCallback(event => {
         const { name, value } = event.target;
         setStudent({ ...student, [name] : value });
-    }, [student]);
+    });
 
     const handleSubmit = () => {
+        console.log(props.student.id, student);
         props.onSubmit(props.student.id, student);
     }
 

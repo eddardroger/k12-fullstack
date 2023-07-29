@@ -15,7 +15,13 @@ const List = (props) => {
     }
 
     const updateStudent = (id,  newStudent) => {
+        setIsOpen(false);
         props.updateStudent(id, newStudent)
+    }
+
+    const handleSortAscending = () => {
+        // points.sort(function(a, b){return a-b});
+        props.students.sort((a, b) => a - b);
     }
 
   return (
@@ -26,6 +32,15 @@ const List = (props) => {
             onSubmit={ updateStudent }
          />
         <table>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>
+                    <button onClick={ handleSortAscending }>Sort tăng dần</button>
+                    <button>Sort giảm dần</button>
+                </th>
+                <th></th>
+            </tr>
             <tr>
                 <th>ID</th>
                 <th>Name</th>

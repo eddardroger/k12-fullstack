@@ -12,6 +12,7 @@ const App = () => {
     }
 
     const updateStudent = (id, newStudent) => {
+        console.log(id, newStudent);
         setStudents(students.map(student => {
             if(student.id === id){
                 return {
